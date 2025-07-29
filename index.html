@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Roadmap Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="universe" id="universe">
+        <div class="sun" id="main-project">
+            <div class="sun-title">My Awesome Project</div>
+            <div class="sun-description">The ultimate solution for cosmic productivity</div>
+            <div class="sun-stats" id="sun-stats"></div>
+        </div>
+        <div class="orbits-container" id="orbits-container"></div>
+        
+        <div class="control-panel">
+            <button class="control-btn" id="add-feature-btn" title="Add New Feature">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="control-btn" id="edit-project-btn" title="Edit Project">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="control-btn" id="search-btn" title="Search Features">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="control-btn" id="toggle-theme-btn" title="Toggle Light/Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="control-btn" id="randomize-btn" title="Randomize Orbits">
+                <i class="fas fa-random"></i>
+            </button>
+            <button class="control-btn" id="zoom-in-btn" title="Zoom In">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button class="control-btn" id="zoom-out-btn" title="Zoom Out">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button class="control-btn" id="reset-zoom-btn" title="Reset Zoom">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button class="control-btn" id="export-btn" title="Export Data">
+                <i class="fas fa-file-export"></i>
+            </button>
+        </div>
+        
+        <div class="status-panel">
+            <div class="status-item">
+                <span class="status-count" id="total-features">0</span>
+                <span class="status-label">Total Features</span>
+            </div>
+            <div class="status-item">
+                <span class="status-count" id="completed-features">0</span>
+                <span class="status-label">Completed</span>
+            </div>
+            <div class="status-item">
+                <span class="status-count" id="in-progress">0</span>
+                <span class="status-label">In Progress</span>
+            </div>
+            <div class="status-item">
+                <span class="status-count" id="critical-features">0</span>
+                <span class="status-label">Critical</span>
+            </div>
+        </div>
+        
+        <div class="search-panel" id="search-panel" style="display: none;">
+            <input type="text" id="search-input" placeholder="Search features...">
+            <button class="btn btn-secondary" id="clear-search-btn">Clear</button>
+        </div>
+        
+        <div class="zoom-level" id="zoom-level">100%</div>
+    </div>
+    
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Project</h3>
+                <button class="close-btn" id="close-project-modal-btn">&times;</button>
+            </div>
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="project-title">Project Name</label>
+                    <input type="text" id="project-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" rows="3"></textarea>
+                </div>
+                <div class="action-btns">
+                    <button type="button" class="btn btn-secondary" id="cancel-project-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal" id="feature-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Add New Feature</h3>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="feature-form">
+                <input type="hidden" id="feature-id">
+                <div class="form-group">
+                    <label for="feature-title">Feature Name</label>
+                    <input type="text" id="feature-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="feature-description">Description</label>
+                    <textarea id="feature-description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="feature-priority">Priority</label>
+                    <select id="feature-priority" required>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="feature-status">Status</label>
+                    <select id="feature-status" required>
+                        <option value="planned">Planned</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="blocked">Blocked</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="feature-difficulty">Difficulty</label>
+                    <select id="feature-difficulty" required>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="epic">Epic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="feature-due-date">Due Date</label>
+                    <input type="date" id="feature-due-date">
+                </div>
+                <div class="form-group">
+                    <label for="feature-tags">Tags (comma separated)</label>
+                    <input type="text" id="feature-tags" placeholder="UI, Backend, Bugfix">
+                </div>
+                <div class="form-group">
+                    <label for="feature-progress">Progress (%)</label>
+                    <input type="number" id="feature-progress" min="0" max="100" value="0">
+                </div>
+                <div class="action-btns">
+                    <button type="button" class="btn btn-secondary" id="cancel-feature-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Feature</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal" id="detail-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="detail-modal-title">Feature Details</h3>
+                <button class="close-btn" id="close-detail-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body" id="detail-modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="edit-feature-btn">Edit</button>
+                <button class="btn btn-danger" id="delete-feature-btn">Delete</button>
+                <button class="btn btn-secondary" id="close-detail-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="data-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="data-modal-title">Export/Import Data</h3>
+                <button class="close-btn" id="close-data-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="export">Export</button>
+                    <button class="tab-btn" data-tab="import">Import</button>
+                </div>
+                <div class="tab-content active" id="export-tab">
+                    <textarea id="export-data" readonly rows="10"></textarea>
+                    <button class="btn btn-primary" id="copy-data-btn">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" id="download-data-btn">Download JSON</button>
+                </div>
+                <div class="tab-content" id="import-tab">
+                    <textarea id="import-data" placeholder="Paste your JSON data here" rows="10"></textarea>
+                    <button class="btn btn-primary" id="import-data-btn">Import Data</button>
+                    <div class="import-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Warning: This will overwrite your current data!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tooltip" id="tooltip"></div>
+    
+    <div class="comet" id="comet">
+        <div class="comet-tail"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
