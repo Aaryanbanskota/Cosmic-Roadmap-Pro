@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://yourusername.github.io/cosmic-roadmap-pro" target="_blank">
-    <img alt="View Live" src="https://img.shields.io/badge/🚀 View Live-black?style=for-the-badge&logo=github&logoColor=white" />
+    <img alt="View Live" src="https://aaryanbanskota.github.io/Cosmic-Roadmap-Pro/🚀 View Live-black?style=for-the-badge&logo=github&logoColor=white" />
   </a>
   <a href="https://github.com/yourusername/cosmic-roadmap-pro" target="_blank">
     <img alt="Source Code" src="https://img.shields.io/badge/🛠️ Source Code-2B2D42?style=for-the-badge&logo=github&logoColor=white" />
